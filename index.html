@@ -3,34 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Minimal Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="display">0</div>
-        <div class="buttons">
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>+</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>*</button>
-            <button>0</button>
-            <button>.</button>
-            <button>=</button>
-            <button>/</button>
-            <button>TEST BUTTON</button>
-            <button>LAST TEST</button>
-            
+   
+     <div class="container">
+        <div class="calculator-section">
+            <div class="top-controls">
+                <div class="mode-toggle" role="group" aria-label="Calculator mode">
+                    <button class="mode-btn active" data-mode="calculator" aria-pressed="true">Calculator</button>
+                    <button class="mode-btn" data-mode="aidar" aria-pressed="false">Aidar Mode</button>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+            </div>
+
+            <div class="calculator">
+                <div class="display-container">
+                    <div id="expression" class="expression" aria-label="Current expression"></div>
+                    <div id="display" class="display" role="status" aria-live="polite" aria-atomic="true">0</div>
+                </div>
+                
+                <div class="buttons" role="grid">
+                    <button data-action="AC" class="btn function" aria-label="All Clear">AC</button>
+                    <button data-action="C" class="btn function" aria-label="Clear">C</button>
+                    <button data-action="percent" class="btn function" aria-label="Percent">%</button>
+                    <button data-action="/" class="btn operator" aria-label="Divide">÷</button>
+                    
+                    <button data-action="7" class="btn" aria-label="Seven">7</button>
+                    <button data-action="8" class="btn" aria-label="Eight">8</button>
+                    <button data-action="9" class="btn" aria-label="Nine">9</button>
+                    <button data-action="*" class="btn operator" aria-label="Multiply">×</button>
+                    
+                    <button data-action="4" class="btn" aria-label="Four">4</button>
+                    <button data-action="5" class="btn" aria-label="Five">5</button>
+                    <button data-action="6" class="btn" aria-label="Six">6</button>
+                    <button data-action="-" class="btn operator" aria-label="Subtract">−</button>
+                    
+                    <button data-action="1" class="btn" aria-label="One">1</button>
+                    <button data-action="2" class="btn" aria-label="Two">2</button>
+                    <button data-action="3" class="btn" aria-label="Three">3</button>
+                    <button data-action="+" class="btn operator" aria-label="Add">+</button>
+                    
+                    <button data-action="negate" class="btn" aria-label="Negate">±</button>
+                    <button data-action="0" class="btn" aria-label="Zero">0</button>
+                    <button data-action="." class="btn" aria-label="Decimal">.</button>
+                    <button data-action="=" class="btn operator" aria-label="Equals">=</button>
+                    
+                    <button data-action="sqrt" class="btn function" aria-label="Square root">√</button>
+                    <button data-action="power" class="btn function" aria-label="Power">x^y</button>
+                    <button data-action="backspace" class="btn function span-2" aria-label="Backspace">⌫ Backspace</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <div class="history-header">
+                <h2>History</h2>
+                <div class="history-controls">
+                    <button id="tapeView" class="tape-btn" aria-label="Toggle tape view">📋 Tape</button>
+                    <button id="clearHistory" class="clear-history-btn" aria-label="Clear history">Clear</button>
+                </div>
+            </div>
+            <div id="history" class="history-list" role="log" aria-live="polite"></div>
         </div>
     </div>
+
+    <div id="tapeModal" class="tape-modal" role="dialog" aria-labelledby="tapeTitle" aria-hidden="true">
+        <div class="tape-content">
+            <div class="tape-header">
+                <h3 id="tapeTitle">Calculation Tape</h3>
+                <button id="closeTape" class="close-tape" aria-label="Close tape">&times;</button>
+            </div>
+            <div id="tapeList" class="tape-list"></div>
+        </div>
+    </div>
+
     <script src="calculator.js"></script>
     <script src="app.js"></script>
 </body>
