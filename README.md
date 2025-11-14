@@ -1,4 +1,6 @@
-#Calculator
+
+
+## Calculator Project 
 
 A minimalistic, accessible web-based calculator application featuring standard arithmetic operations and a special "Aidar Mode" for demonstration purposes.
 
